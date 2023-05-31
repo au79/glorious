@@ -38,7 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.repeatOnLifecycle
-import com.oolong.glorious.ui.theme.MyApplicationTheme
+import com.oolong.glorious.ui.theme.GloriousTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
 
 @Composable
@@ -95,7 +95,7 @@ internal fun MessageScreen(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
-    MyApplicationTheme {
+    GloriousTheme {
         MessageScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }
@@ -103,7 +103,7 @@ private fun DefaultPreview() {
 @Preview(showBackground = true, widthDp = 480)
 @Composable
 private fun PortraitPreview() {
-    MyApplicationTheme {
+    GloriousTheme {
         MessageScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }
