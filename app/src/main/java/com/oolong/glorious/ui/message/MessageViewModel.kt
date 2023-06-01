@@ -26,9 +26,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import com.oolong.glorious.data.MessageRepository
-import com.oolong.glorious.ui.message.MessageUiState.Error
-import com.oolong.glorious.ui.message.MessageUiState.Loading
-import com.oolong.glorious.ui.message.MessageUiState.Success
+import com.oolong.glorious.ui.UiState
+import com.oolong.glorious.ui.UiState.Error
+import com.oolong.glorious.ui.UiState.Loading
+import com.oolong.glorious.ui.UiState.Success
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,8 +37,8 @@ class MessageViewModel @Inject constructor(
     private val messageRepository: MessageRepository
 ) : ViewModel() {
 
-    val uiState: StateFlow<MessageUiState> = messageRepository
-        .messages.map<List<String>, MessageUiState>(::Success)
+    val uiState: StateFlow<UiState<List<String>>> = messageRepository
+        .messages.map<List<String>, UiState<List<String>>>(::Success)
         .catch { emit(Error(it)) }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), Loading)
 
@@ -48,8 +49,3 @@ class MessageViewModel @Inject constructor(
     }
 }
 
-sealed interface MessageUiState {
-    object Loading : MessageUiState
-    data class Error(val throwable: Throwable) : MessageUiState
-    data class Success(val data: List<String>) : MessageUiState
-}
