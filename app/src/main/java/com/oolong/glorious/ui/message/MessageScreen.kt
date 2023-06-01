@@ -40,12 +40,15 @@ import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.repeatOnLifecycle
 import com.oolong.glorious.ui.theme.GloriousTheme
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.oolong.glorious.ui.UiState
 
 @Composable
-fun MessageScreen(modifier: Modifier = Modifier, viewModel: MessageViewModel = hiltViewModel()) {
+fun MessageScreen(navController: NavController, modifier: Modifier = Modifier, viewModel: MessageViewModel = hiltViewModel()) {
     val lifecycle = LocalLifecycleOwner.current.lifecycle
-    val items by produceState<MessageUiState>(
-        initialValue = MessageUiState.Loading,
+    val uiState by produceState<UiState<List<String>>>(
+        initialValue = UiState.Loading,
         key1 = lifecycle,
         key2 = viewModel
     ) {
@@ -53,9 +56,10 @@ fun MessageScreen(modifier: Modifier = Modifier, viewModel: MessageViewModel = h
             viewModel.uiState.collect { value = it }
         }
     }
-    if (items is MessageUiState.Success) {
+    if (uiState is UiState.Success) {
         MessageScreen(
-            items = (items as MessageUiState.Success).data,
+            navController,
+            items = (uiState as UiState.Success).data,
             onSave = viewModel::addMessage,
             modifier = modifier
         )
@@ -65,14 +69,28 @@ fun MessageScreen(modifier: Modifier = Modifier, viewModel: MessageViewModel = h
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 internal fun MessageScreen(
+    navController: NavController,
     items: List<String>,
     onSave: (name: String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     Column(modifier) {
         var nameMessage by remember { mutableStateOf("Compose") }
+        Row(modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 24.dp),
+            horizontalArrangement = Arrangement.spacedBy(16.dp)
+        ) {
+            Button(onClick = {
+                navController.navigate("settings")
+            }) {
+                Text("Go to Settings")
+            }
+        }
         Row(
-            modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = 24.dp),
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             TextField(
@@ -95,15 +113,17 @@ internal fun MessageScreen(
 @Preview(showBackground = true)
 @Composable
 private fun DefaultPreview() {
+    val navController = rememberNavController()
     GloriousTheme {
-        MessageScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
+        MessageScreen(navController, listOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }
 
 @Preview(showBackground = true, widthDp = 480)
 @Composable
 private fun PortraitPreview() {
+    val navController = rememberNavController()
     GloriousTheme {
-        MessageScreen(listOf("Compose", "Room", "Kotlin"), onSave = {})
+        MessageScreen(navController, listOf("Compose", "Room", "Kotlin"), onSave = {})
     }
 }
