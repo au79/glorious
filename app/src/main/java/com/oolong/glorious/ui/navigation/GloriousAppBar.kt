@@ -1,6 +1,7 @@
 package com.oolong.glorious.ui.navigation
 
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -15,8 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 @Composable
 fun GloriousAppBar(
   title: String,
-  imageVector: ImageVector,
-  contentDescription: String?,
+  isMainScreen: Boolean,
   onClick: () -> Unit,
 ) {
   TopAppBar(
@@ -26,8 +26,8 @@ fun GloriousAppBar(
     navigationIcon = {
       IconButton(onClick = onClick) {
         Icon(
-          imageVector = imageVector,
-          contentDescription = contentDescription
+          imageVector = if (isMainScreen) Icons.Filled.Menu else Icons.Filled.ArrowBack,
+          contentDescription = if (isMainScreen) Icons.Filled.Menu.name else Icons.Filled.ArrowBack.name
         )
       }
     }
@@ -36,10 +36,18 @@ fun GloriousAppBar(
 
 @Preview
 @Composable
-fun TopAppBarPreview() {
+fun TopAppBarMainScreenPreview() {
   com.oolong.glorious.ui.navigation.GloriousAppBar(
-    title = "Preview",
-    Icons.Filled.Menu,
-    Icons.Filled.Menu.name
+    title = "Main Screen",
+    isMainScreen = true
+  ) {}
+}
+
+@Preview
+@Composable
+fun TopAppBarOtherScreenPreview() {
+  com.oolong.glorious.ui.navigation.GloriousAppBar(
+    title = "Other Screen",
+    isMainScreen = false
   ) {}
 }

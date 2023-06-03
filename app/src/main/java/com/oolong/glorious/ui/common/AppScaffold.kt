@@ -26,24 +26,18 @@ fun AppScaffold(
     // Refactor to AppScaffold
     modifier = Modifier.fillMaxSize(),
     topBar = {
-      if (isMainScreen)
-        GloriousAppBar(
-          title = displayTitle,
-          imageVector = Icons.Filled.Menu,
-          contentDescription = Icons.Filled.Menu.name,
-          onClick = onMenuIconClick,
-        )
-      else
-        GloriousAppBar(
-          title = displayTitle,
-          imageVector = Icons.Filled.ArrowBack,
-          contentDescription = Icons.Filled.ArrowBack.name,
-          onClick = onArrowBackClick,
-        )
+      GloriousAppBar(
+        title = displayTitle,
+        isMainScreen = isMainScreen,
+        onClick = if (isMainScreen) onMenuIconClick else onArrowBackClick
+      )
     },
   ) { paddingValues ->
     // Padding values passed in take into account any bottom bar.
-    content(Modifier.padding(paddingValues).padding(16.dp))
+    content(
+      Modifier
+        .padding(paddingValues)
+        .padding(16.dp))
   }
 }
 
