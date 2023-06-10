@@ -16,13 +16,13 @@
 
 package com.oolong.glorious.testdi
 
+import com.oolong.glorious.data.MessageRepository
+import com.oolong.glorious.data.di.DataModule
+import com.oolong.glorious.data.di.FakeMessageRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.components.SingletonComponent
 import dagger.hilt.testing.TestInstallIn
-import com.oolong.glorious.data.MessageRepository
-import com.oolong.glorious.data.di.DataModule
-import com.oolong.glorious.data.di.FakeMessageRepository
 
 @Module
 @TestInstallIn(

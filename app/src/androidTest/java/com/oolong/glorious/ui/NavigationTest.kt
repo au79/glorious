@@ -18,11 +18,11 @@ package com.oolong.glorious.ui
 
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithText
+import com.oolong.glorious.data.di.fakeMessages
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Rule
 import org.junit.Test
-import com.oolong.glorious.data.di.fakeMessages
 
 @HiltAndroidTest
 class NavigationTest {
