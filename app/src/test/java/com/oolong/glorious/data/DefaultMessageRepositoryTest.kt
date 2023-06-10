@@ -16,6 +16,8 @@
 
 package com.oolong.glorious.data
 
+import com.oolong.glorious.data.local.database.Message
+import com.oolong.glorious.data.local.database.MessageDao
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -23,8 +25,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import com.oolong.glorious.data.local.database.Message
-import com.oolong.glorious.data.local.database.MessageDao
 
 /**
  * Unit tests for [DefaultMessageRepository].

@@ -17,6 +17,7 @@
 package com.oolong.glorious.ui.message
 
 
+import com.oolong.glorious.data.MessageRepository
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -24,7 +25,6 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import com.oolong.glorious.data.MessageRepository
 
 /**
  * Example local unit test, which will execute on the development machine (host).

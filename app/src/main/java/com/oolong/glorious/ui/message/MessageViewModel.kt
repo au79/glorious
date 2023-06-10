@@ -18,6 +18,11 @@ package com.oolong.glorious.ui.message
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.oolong.glorious.data.MessageRepository
+import com.oolong.glorious.ui.UiState
+import com.oolong.glorious.ui.UiState.Error
+import com.oolong.glorious.ui.UiState.Loading
+import com.oolong.glorious.ui.UiState.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -25,11 +30,6 @@ import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
-import com.oolong.glorious.data.MessageRepository
-import com.oolong.glorious.ui.UiState
-import com.oolong.glorious.ui.UiState.Error
-import com.oolong.glorious.ui.UiState.Loading
-import com.oolong.glorious.ui.UiState.Success
 import javax.inject.Inject
 
 @HiltViewModel
