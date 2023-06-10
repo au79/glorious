@@ -76,17 +76,6 @@ internal fun MessageScreen(
 ) {
     Column(modifier) {
         var nameMessage by remember { mutableStateOf("Compose") }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .padding(bottom = 24.dp),
-            horizontalArrangement = Arrangement.spacedBy(16.dp)
-        ) {
-            Button(onClick = {
-                navController.navigate("settings")
-            }) {
-                Text("Go to Settings")
-            }
-        }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
