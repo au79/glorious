@@ -12,6 +12,7 @@ import androidx.compose.material3.rememberDrawerState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.oolong.glorious.ui.common.AppScaffold
@@ -37,19 +38,29 @@ class MainActivity : ComponentActivity() {
           val navController = rememberNavController()
           val navBackStackEntry by navController.currentBackStackEntryAsState()
           val currentDestination = navBackStackEntry?.destination
-          val displayTitle =
-            (Screen forName currentDestination?.route)?.displayName ?: Screen.MAIN.displayName
+          val displayTitleResource =
+            (Screen forRoute currentDestination?.route)?.displayNameRes
+              ?: Screen.MAIN.displayNameRes
+          val displayTitle = stringResource(displayTitleResource)
           val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
           val coroutineScope = rememberCoroutineScope()
 
           ModalNavigationDrawer(
             drawerState = drawerState,
             drawerContent = {
-              AppNavigationDrawerContent()
+              AppNavigationDrawerContent(
+                drawerItems = listOf(Screen.SETTINGS),
+                onClick = { screen: Screen ->
+                  coroutineScope.launch {
+                    navController.navigate(screen.route)
+                    drawerState.close()
+                  }
+                }
+              )
             }
           ) {
             AppScaffold(
-              isMainScreen = currentDestination?.route == Screen.MAIN.screenName,
+              isMainScreen = currentDestination?.route == Screen.MAIN.route,
               displayTitle = displayTitle,
               onMenuIconClick = {
                 coroutineScope.launch {
