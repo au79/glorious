@@ -1,4 +1,4 @@
-package com.oolong.glorious.ui.settings
+package com.oolong.glorious.ui.screens.settings
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

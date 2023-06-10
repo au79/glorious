@@ -18,6 +18,7 @@ package com.oolong.glorious.ui.message
 
 
 import com.oolong.glorious.data.MessageRepository
+import com.oolong.glorious.ui.screens.message.MessageViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first

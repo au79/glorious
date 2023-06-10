@@ -5,8 +5,8 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.oolong.glorious.ui.message.MessageScreen
-import com.oolong.glorious.ui.settings.SettingsScreen
+import com.oolong.glorious.ui.screens.message.MessageScreen
+import com.oolong.glorious.ui.screens.settings.SettingsScreen
 
 @Composable
 fun MainNavigation(

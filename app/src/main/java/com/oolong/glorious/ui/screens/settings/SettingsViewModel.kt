@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.oolong.glorious.ui.settings
+package com.oolong.glorious.ui.screens.settings
 
 import androidx.lifecycle.ViewModel
 import com.oolong.glorious.ui.UiState

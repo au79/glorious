@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.oolong.glorious.ui.message
+package com.oolong.glorious.ui.screens.message
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
