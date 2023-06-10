@@ -18,13 +18,13 @@ package com.oolong.glorious.data.local.di
 
 import android.content.Context
 import androidx.room.Room
+import com.oolong.glorious.data.local.database.AppDatabase
+import com.oolong.glorious.data.local.database.MessageDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import com.oolong.glorious.data.local.database.AppDatabase
-import com.oolong.glorious.data.local.database.MessageDao
 import javax.inject.Singleton
 
 

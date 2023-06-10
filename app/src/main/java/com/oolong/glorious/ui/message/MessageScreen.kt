@@ -23,6 +23,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
@@ -38,11 +39,10 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle.State.STARTED
 import androidx.lifecycle.repeatOnLifecycle
-import com.oolong.glorious.ui.theme.GloriousTheme
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.oolong.glorious.ui.UiState
+import com.oolong.glorious.ui.theme.GloriousTheme
 
 @Composable
 fun MessageScreen(navController: NavController, modifier: Modifier = Modifier, viewModel: MessageViewModel = hiltViewModel()) {

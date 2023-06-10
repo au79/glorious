@@ -16,14 +16,14 @@
 
 package com.oolong.glorious.data.di
 
+import com.oolong.glorious.data.DefaultMessageRepository
+import com.oolong.glorious.data.MessageRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import com.oolong.glorious.data.MessageRepository
-import com.oolong.glorious.data.DefaultMessageRepository
 import javax.inject.Inject
 import javax.inject.Singleton
 

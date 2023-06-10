@@ -16,10 +16,10 @@
 
 package com.oolong.glorious.data
 
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import com.oolong.glorious.data.local.database.Message
 import com.oolong.glorious.data.local.database.MessageDao
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 interface MessageRepository {
