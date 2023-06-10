@@ -13,8 +13,8 @@ fun MainNavigation(
   navController: NavHostController,
   modifier: Modifier = Modifier,
 ) {
-  NavHost(navController = navController, startDestination = Screen.MAIN.screenName) {
-    composable(Screen.MAIN.screenName) { MessageScreen(navController, modifier) }
-    composable(Screen.SETTINGS.screenName) { SettingsScreen(modifier) }
+  NavHost(navController = navController, startDestination = Screen.MAIN.route) {
+    composable(Screen.MAIN.route) { MessageScreen(navController, modifier) }
+    composable(Screen.SETTINGS.route) { SettingsScreen(modifier) }
   }
 }
